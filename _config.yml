@@ -1,0 +1,15 @@
+title: Samuel Mendes Portfolio
+description: Portfolio of Samuel Mendes dos Santos
+theme: null
+plugins: []
+exclude:
+  - node_modules
+  - src
+  - public
+  - dist
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - postcss.config.js
+  - vite.config.js
+  - README.md
