@@ -1,7 +1,5 @@
-import { FileDown, FolderGit2, Github, Linkedin, Mail } from "lucide-react";
+import { FolderGit2, Github, Linkedin, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
-
-const resumeUrl = `${import.meta.env.BASE_URL}resume_samuel.pdf`;
 
 const actionLinks = [
   { label: "view_projects", href: "#projects", icon: FolderGit2 },
@@ -16,12 +14,6 @@ const actionLinks = [
     label: "contact",
     href: "mailto:samuelmsantos021@gmail.com",
     icon: Mail,
-  },
-  {
-    label: "view_resume",
-    href: resumeUrl,
-    icon: FileDown,
-    external: true,
   },
 ];
 
