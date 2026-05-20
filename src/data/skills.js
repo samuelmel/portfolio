@@ -1,0 +1,65 @@
+export const skillGroups = [
+  {
+    label: "languages",
+    cmd: "ls ./languages",
+    items: [
+      { name: "Python", lvl: 92 },
+      { name: "SQL", lvl: 85 },
+      { name: "C#", lvl: 60 },
+    ],
+  },
+  {
+    label: "data_engineering",
+    cmd: "ls ./data",
+    items: [
+      { name: "pandas", lvl: 88 },
+      { name: "ETL/ELT", lvl: 80 },
+      { name: "SQLite", lvl: 82 },
+      { name: "PostgreSQL", lvl: 74 },
+      { name: "APIs", lvl: 81 },
+      { name: "Data Quality", lvl: 76 },
+      { name: "Medallion architecture", lvl: 80 },
+    ],
+  },
+  {
+    label: "backend_automation",
+    cmd: "ls ./backend",
+    items: [
+      { name: "Flask", lvl: 80 },
+      { name: "REST APIs", lvl: 82 },
+      { name: "SQLAlchemy", lvl: 74 },
+      { name: "Web Scraping", lvl: 78 },
+      { name: "BeautifulSoup", lvl: 80 },
+      { name: "Telegram Bot API", lvl: 74 },
+    ],
+  },
+  {
+    label: "tools_ops",
+    cmd: "ls ./ops",
+    items: [
+      { name: "Git", lvl: 86 },
+      { name: "GitHub", lvl: 85 },
+      { name: "Docker", lvl: 70 },
+      { name: "Docker Compose", lvl: 66 },
+      { name: "Linux", lvl: 78 },
+      { name: "Windows", lvl: 84 },
+      { name: "Streamlit", lvl: 84 },
+      { name: "Plotly", lvl: 72 },
+      { name: "pytest", lvl: 72 },
+    ],
+  },
+  {
+    label: "cybersecurity",
+    cmd: "ls ./security",
+    items: [
+      { name: "TCP/IP", lvl: 76 },
+      { name: "DNS", lvl: 72 },
+      { name: "HTTP", lvl: 78 },
+      { name: "Network Monitoring", lvl: 74 },
+      { name: "Logs", lvl: 72 },
+      { name: "Scapy", lvl: 70 },
+      { name: "Nmap", lvl: 72 },
+      { name: "Wireshark", lvl: 65 },
+    ],
+  },
+];
