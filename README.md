@@ -75,14 +75,4 @@ npm run build
 3. In GitHub, open `Settings` > `Pages`.
 4. Select the branch and folder configured for publishing.
 
-## Publishing steps on GitHub
 
-1. Create a GitHub repository and push this project.
-2. Upload your real resume file to `public/resume.pdf`.
-3. Confirm that the LinkedIn, GitHub and email links are correct.
-4. Run `npm run build` to verify the production output.
-5. Publish with `npm run deploy` or configure GitHub Pages manually.
-
-## Notes
-
-- If your GitHub Pages repository uses a custom workflow instead of `gh-pages`, you can still keep this Vite structure and adapt only the deployment step.
