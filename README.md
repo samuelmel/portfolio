@@ -1,78 +1,33 @@
 # Samuel Mendes Portfolio
 
-Professional personal portfolio built with React, Vite and Tailwind CSS. The site is written in English and presents Samuel Mendes dos Santos as a Computer Science student focused on data engineering, Python, automation, backend and cybersecurity.
+Personal portfolio of Samuel Mendes dos Santos, Computer Science student in Fortaleza, Brazil, focused on data engineering. Built with React, Vite and Tailwind CSS (reset and utilities only; the design tokens live in `src/index.css`).
 
-## Stack
-
-- React
-- Vite
-- Tailwind CSS
-- lucide-react
+Live site: https://samuelmel.github.io/portfolio/
 
 ## Running locally
 
-1. Install dependencies:
-
 ```bash
 npm install
-```
-
-2. Start the development server:
-
-```bash
-npm run dev
-```
-
-3. Build for production:
-
-```bash
-npm run build
-```
-
-4. Preview the production build locally:
-
-```bash
-npm run preview
+npm run dev        # development server
+npm run build      # production build into dist/
+npm run preview    # serve the production build
 ```
 
 ## Project structure
 
-- `src/components`: reusable UI sections such as Navbar, Hero, About, Skills, Projects, Resume, Contact and Footer
-- `src/data/projects.js`: portfolio projects in a separate array for easy editing
-- `src/data/skills.js`: grouped skills used by the Skills section
-- `public/resume.pdf`: expected resume file for download buttons
+- `src/components`: Navbar, Hero, Projects, CaseStudy, About, Contact, Footer
+- `src/data/profile.js`: name, tagline, links, about text, stack groups and "Now"
+- `src/data/projects.js`: the three case studies (question, what was done, finding, stack, images, links)
+- `public/projects/*.webp`: project images (1600px wide, under 200 KB)
+- `public/resume_samuel.pdf`: CV linked from the navbar, hero and contact
+- `public/og.png`, `public/favicon.svg`: link preview and tab icon
 
-## GitHub Pages deployment
+## Deployment (GitHub Pages)
 
-This project is configured with `base: "./"` in `vite.config.js`, which makes the build easier to publish on GitHub Pages without hardcoding a repository name.
-
-### Option 1: Deploy with `gh-pages`
-
-1. Install dependencies:
+The site is published from the `docs/` folder of the `main` branch, with `base: "/portfolio/"` in `vite.config.js`.
 
 ```bash
-npm install
+npm run build:docs
 ```
 
-2. Run the deploy script:
-
-```bash
-npm run deploy
-```
-
-3. In your GitHub repository, open `Settings` > `Pages`.
-4. If needed, set the source branch used by `gh-pages` and save.
-
-### Option 2: Manual deployment
-
-1. Build the project:
-
-```bash
-npm run build
-```
-
-2. Push the generated `dist` content to a branch used for GitHub Pages, such as `gh-pages`.
-3. In GitHub, open `Settings` > `Pages`.
-4. Select the branch and folder configured for publishing.
-
-
+Then commit `docs/` and push. Do not use `gh-pages` or another branch: `docs/` is the only deploy path.

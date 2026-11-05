@@ -1,54 +1,49 @@
-export const SectionLabel = ({ index, name }) => {
-  return (
-    <div className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground">
-      <span className="text-terminal">[{index}]</span>
-      <span>// {name}</span>
-    </div>
-  );
-};
+import { profile } from "../data/profile";
 
 const About = () => {
-  const meta = [
-    ["id", "0x01"],
-    ["role", "cs_student"],
-    ["interest", "data_eng / backend / cyber"],
-    ["learning_loop", "build -> test -> document"],
-  ];
-
+  const [lead, ...rest] = profile.sobre;
   return (
-    <section id="about" className="border-b border-border">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-20 sm:px-6 md:grid-cols-12">
-        <div className="md:col-span-4">
-          <SectionLabel index="01" name="about" />
-          <h2 className="mt-3 font-sans text-3xl font-semibold tracking-tight">
-            System profile
-          </h2>
-          <p className="mt-2 font-mono text-xs text-muted-foreground">
-            // technical overview
-          </p>
+    <section id="about" className="section">
+      <div className="page">
+        <div className="section__head">
+          <h2 className="section__title">About</h2>
         </div>
-        <div className="md:col-span-8">
-          <div className="rounded-md border border-border bg-card/60 p-6 sm:p-8">
-            <p className="text-base leading-relaxed text-foreground/90">
-              Computer Science student focused on building practical systems with{" "}
-              <span className="font-mono text-terminal">Python</span>,{" "}
-              <span className="font-mono text-terminal">SQL</span> and modern
-              development tools. My projects involve data engineering pipelines,
-              automation, APIs, dashboards and cybersecurity-related systems. I enjoy
-              learning by building real-world projects and improving them with
-              architecture, testing and documentation.
-            </p>
-            <div className="mt-6 grid grid-cols-1 gap-px overflow-hidden rounded border border-border bg-border font-mono text-xs sm:grid-cols-2">
-              {meta.map(([key, value]) => (
-                <div
-                  key={key}
-                  className="flex items-center justify-between bg-card px-4 py-3"
-                >
-                  <span className="text-muted-foreground">{key}</span>
-                  <span className="text-foreground">{value}</span>
-                </div>
+        <div className="about">
+          <div className="about__text">
+            <p className="about__lead">{lead}</p>
+            <div style={{ marginTop: "var(--space-md)" }}>
+              {rest.map((texto) => (
+                <p key={texto}>{texto}</p>
               ))}
             </div>
+          </div>
+
+          <div>
+            <h3 className="label" style={{ marginTop: 0, fontFamily: "var(--font-mono)" }}>
+              What I use
+            </h3>
+            <dl className="stack">
+              {profile.stack.map(({ grupo, itens }) => (
+                <div key={grupo}>
+                  <dt>{grupo}</dt>
+                  <dd>{itens.join(" · ")}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="muted mono" style={{ marginTop: "var(--space-sm)" }}>
+              {profile.stackNota}
+            </p>
+          </div>
+
+          <div>
+            <h3 className="label" style={{ marginTop: 0, fontFamily: "var(--font-mono)" }}>
+              Now
+            </h3>
+            <ul className="dashed">
+              {profile.agora.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
