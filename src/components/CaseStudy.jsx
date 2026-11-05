@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { ExternalLink } from "lucide-react";
-import { profile } from "../data/profile";
-import { statusLabel } from "../data/projects";
+import { useLang } from "../lang";
 
 const useReveal = () => {
   const ref = useRef(null);
@@ -41,6 +40,7 @@ const Figure = ({ src, alt, legenda, eager }) => (
 );
 
 const CaseStudy = ({ projeto, flip }) => {
+  const { t, profile } = useLang();
   const textRef = useReveal();
   const { numero, ano, status, titulo, resumo, feitos, decisaoRotulo, decisao, stack } = projeto;
   const { imagem, alt, legenda, galeria, links, codigoNota } = projeto;
@@ -52,14 +52,14 @@ const CaseStudy = ({ projeto, flip }) => {
           <span className="case__number" aria-hidden="true">
             {numero}
           </span>
-          <span className="mono muted">Case {numero} · {ano}</span>
-          <span className="stamp">{statusLabel[status]}</span>
+          <span className="mono muted">{t.projects.caso} {numero} · {ano}</span>
+          <span className="stamp">{t.status[status]}</span>
         </div>
 
         <h3 className="case__title">{titulo}</h3>
         <p className="case__question">{resumo}</p>
 
-        <h4 className="label">What I did</h4>
+        <h4 className="label">{t.projects.did}</h4>
         <ul className="dashed">
           {feitos.map((item) => (
             <li key={item}>{item}</li>
@@ -69,7 +69,7 @@ const CaseStudy = ({ projeto, flip }) => {
         <h4 className="label">{decisaoRotulo}</h4>
         <p className="case__finding">{decisao}</p>
 
-        <ul className="chips" aria-label="Stack">
+        <ul className="chips" aria-label={t.projects.stack}>
           {stack.map((item) => (
             <li key={item}>{item}</li>
           ))}
@@ -78,24 +78,24 @@ const CaseStudy = ({ projeto, flip }) => {
         <div className="case__links">
           {links.codigo && (
             <a className="link" href={links.codigo} target="_blank" rel="noreferrer">
-              Source code <ExternalLink size={16} aria-hidden="true" />
+              {t.projects.code} <ExternalLink size={16} aria-hidden="true" />
             </a>
           )}
           {links.demo && (
             <a className="link" href={links.demo} target="_blank" rel="noreferrer">
-              Live demo <ExternalLink size={16} aria-hidden="true" />
+              {t.projects.demo} <ExternalLink size={16} aria-hidden="true" />
             </a>
           )}
           {links.releases && (
             <a className="link" href={links.releases} target="_blank" rel="noreferrer">
-              Releases <ExternalLink size={16} aria-hidden="true" />
+              {t.projects.releases} <ExternalLink size={16} aria-hidden="true" />
             </a>
           )}
           {codigoNota && (
             <>
               <span className="muted">{codigoNota}</span>
-              <a className="link" href={`mailto:${profile.links.email}?subject=${encodeURIComponent(`Code for ${titulo}`)}`}>
-                Ask for access
+              <a className="link" href={`mailto:${profile.links.email}?subject=${encodeURIComponent(`${t.projects.askSubject} ${titulo}`)}`}>
+                {t.projects.ask}
               </a>
             </>
           )}

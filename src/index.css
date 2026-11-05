@@ -207,6 +207,16 @@ a {
   border-bottom-color: var(--color-accent);
 }
 
+.nav__lang {
+  background: none;
+  border-top: 0;
+  border-inline: 0;
+  font: inherit;
+  font-weight: 500;
+  color: inherit;
+  cursor: pointer;
+}
+
 .nav__toggle {
   display: none;
   background: none;

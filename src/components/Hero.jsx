@@ -1,7 +1,9 @@
 import { ArrowDown, Mail } from "lucide-react";
-import { profile } from "../data/profile";
+import { useLang } from "../lang";
 
-const Hero = () => (
+const Hero = () => {
+  const { t, profile } = useLang();
+  return (
   <section id="top" className="hero">
     <div className="page hero__grid">
       <div>
@@ -13,10 +15,10 @@ const Hero = () => (
         <p className="hero__tagline">{profile.frase}</p>
         <div className="hero__actions">
           <a href="#projects" className="btn btn--primary">
-            View projects <ArrowDown size={18} aria-hidden="true" />
+            {t.hero.view} <ArrowDown size={18} aria-hidden="true" />
           </a>
           <a href={`mailto:${profile.links.email}`} className="btn">
-            <Mail size={18} aria-hidden="true" /> Email me
+            <Mail size={18} aria-hidden="true" /> {t.hero.email}
           </a>
         </div>
       </div>
@@ -43,12 +45,13 @@ const Hero = () => (
             target="_blank"
             rel="noreferrer"
           >
-            CV (PDF)
+            {t.hero.cv}
           </a>
         </div>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Hero;

@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
-import { profile } from "../data/profile";
+import { useLang } from "../lang";
 
-const links = [
-  { id: "projects", label: "Projects" },
-  { id: "about", label: "About" },
-  { id: "contact", label: "Contact" },
-];
+const ids = ["projects", "about", "contact"];
 
 const Navbar = () => {
+  const { t, profile, toggle } = useLang();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
 
@@ -21,7 +18,7 @@ const Navbar = () => {
       },
       { rootMargin: "-40% 0px -55% 0px" },
     );
-    links.forEach(({ id }) => {
+    ids.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -41,10 +38,10 @@ const Navbar = () => {
           aria-controls="nav-links"
           onClick={() => setOpen((value) => !value)}
         >
-          {open ? "Close" : "Menu"}
+          {open ? t.nav.close : t.nav.menu}
         </button>
         <ul id="nav-links" className="nav__links" data-open={open}>
-          {links.map(({ id, label }) => (
+          {ids.map((id) => (
             <li key={id}>
               <a
                 href={`#${id}`}
@@ -52,7 +49,7 @@ const Navbar = () => {
                 aria-current={active === id ? "true" : undefined}
                 onClick={() => setOpen(false)}
               >
-                {label}
+                {t.nav[id]}
               </a>
             </li>
           ))}
@@ -63,8 +60,13 @@ const Navbar = () => {
               target="_blank"
               rel="noreferrer"
             >
-              CV
+              {t.nav.cv}
             </a>
+          </li>
+          <li>
+            <button type="button" className="nav__link nav__lang" onClick={toggle} aria-label={t.nav.switchLabel}>
+              {t.nav.switchTo}
+            </button>
           </li>
         </ul>
       </div>

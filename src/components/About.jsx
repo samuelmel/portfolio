@@ -1,12 +1,13 @@
-import { profile } from "../data/profile";
+import { useLang } from "../lang";
 
 const About = () => {
+  const { t, profile } = useLang();
   const [lead, ...rest] = profile.sobre;
   return (
     <section id="about" className="section">
       <div className="page">
         <div className="section__head">
-          <h2 className="section__title">About</h2>
+          <h2 className="section__title">{t.about.title}</h2>
         </div>
         <div className="about">
           <div className="about__text">
@@ -20,7 +21,7 @@ const About = () => {
 
           <div>
             <h3 className="label" style={{ marginTop: 0, fontFamily: "var(--font-mono)" }}>
-              What I use
+              {t.about.use}
             </h3>
             <dl className="stack">
               {profile.stack.map(({ grupo, itens }) => (
@@ -37,7 +38,7 @@ const About = () => {
 
           <div>
             <h3 className="label" style={{ marginTop: 0, fontFamily: "var(--font-mono)" }}>
-              Now
+              {t.about.now}
             </h3>
             <ul className="dashed">
               {profile.agora.map((item) => (

@@ -1,13 +1,15 @@
-import { profile } from "../data/profile";
+import { useLang } from "../lang";
 
-const Contact = () => (
+const Contact = () => {
+  const { t, profile } = useLang();
+  return (
   <section id="contact" className="contact">
     <div className="page">
       <h2 className="mono muted" style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-sm)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-        Contact
+        {t.contact.title}
       </h2>
       <p style={{ marginTop: "var(--space-sm)", maxWidth: "65ch" }}>
-        I'm looking for an internship in data engineering or analysis. The fastest way to reach me is email.
+        {t.contact.text}
       </p>
       <a className="contact__mail" href={`mailto:${profile.links.email}`}>
         {profile.links.email}
@@ -25,11 +27,12 @@ const Contact = () => (
           target="_blank"
           rel="noreferrer"
         >
-          CV (PDF)
+          {t.hero.cv}
         </a>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Contact;
