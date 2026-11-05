@@ -4,9 +4,10 @@
 > do site publicado (https://samuelmel.github.io/portfolio/, visto em 1920px e 375px) e dos
 > projetos em `D:\Downloads\pastas codigo\`.
 >
-> **Antes de começar:** carregue as skills `hallmark` (direção visual sem cara de IA),
-> `layout-tela-cheia` (regra global do Samuel) e `frontend-design`. No fim, rode `web-review`
-> no resultado. Siga as regras globais: commits sem coautor, nunca `git push` sem pedido.
+> **Antes de começar:** leia a seção 9 (skills por etapa) e carregue cada skill só na etapa
+> em que ela entra, não todas de uma vez. Base fixa: `hallmark` (direção visual sem cara de IA)
+> e `layout-tela-cheia` (regra global do Samuel). Siga as regras globais: commits sem coautor,
+> nunca `git push` sem pedido.
 
 ---
 
@@ -194,3 +195,47 @@ rigoroso, achado honesto.
 - [ ] Prévia de link (og:image) aparece ao colar a URL.
 - [ ] `npm run build` passa; README bate com a configuração real.
 - [ ] Um visitante consegue dizer em 5 segundos: quem é, o que faz, onde ver o melhor projeto.
+
+---
+
+## 9. Skills ideais por etapa
+
+Escolhidas entre as skills instaladas. Regra de conflito: se `hallmark` e outra skill de
+estética discordarem (fonte, cor, estilo), vale `hallmark` e a direção "Dossiê" da seção 5.
+`ui-ux-pro-max` entra só como consulta (pares de fontes, paletas), nunca para trocar a direção.
+
+| Etapa (tarefas da seção 7) | Skill | Para que serve aqui |
+|---|---|---|
+| 1. Ler os projetos | `diagnostico-projeto` | Mapear stack e comandos reais do repositório antes de editar (o `package.json` já mostra Vite + React + Tailwind 3). |
+| 4. Dados e texto | `website-design:design-system` | Registrar a direção escolhida (fonte, cor, espaçamento, tom) em um `DESIGN.md` na raiz, para as decisões não se perderem entre sessões. |
+| 4. Texto do hero e do Sobre | `marketing-skills:copywriting` | Frase de posicionamento, resumo de cada caso e "Sobre" na voz do Samuel, sem jargão de tema (B2, B3). |
+| 4. Texto | `design-skills:ux-writing` | Rótulos de botão, links, estados e `alt` curtos e claros. |
+| 4. Texto | `marketing-skills:copy-editing` | Passada final para cortar enchimento e conferir que nenhum número foi inventado (seção 8). |
+| 6. Design system | `hallmark` | Direção visual, tipografia e paleta sem cara de template. É a skill principal do plano. |
+| 6–7. Componentes | `frontend-design:frontend-design` | Execução dos componentes com escolhas intencionais (Hero, `CaseStudy`). |
+| 6–7. Layout | `layout-tela-cheia` | Container de largura total, casos em 12 colunas, celular como adaptação (seção 5). |
+| 7. Movimento | `design-skills:interaction-design` | Entrada dos casos ao rolar e hover da imagem, com `prefers-reduced-motion`. |
+| 7. PT/EN | `zizi-skills:i18n` | Dicionário `src/i18n.js`, troca de `lang`, persistência com try/catch (só se o Samuel confirmar dois idiomas). |
+| 8. SEO e prévia de link | `marketing-skills:seo-audit` | Conferir título, descrição, `og:*`, `theme-color`, favicon. |
+| 8. SEO | `marketing-skills:schema-markup` | JSON-LD `Person` no `index.html` (nome, cidade, links). |
+| 9. Acessibilidade | `design-skills:accessibility-audit` | Contraste ≥ 4,5:1, foco visível, `aria-expanded`, teclado, leitor de tela (C2, C3, C4). |
+| 10. Verificar | `engineering-advanced-skills:full-page-screenshot` | Capturas de página inteira em 1920, 1280 e 375px. |
+| 10. Verificar | `website-design:web-review` | Revisão final: mensagem, hierarquia, cara de IA, mobile, contraste. Corrigir o que apontar antes de fechar. |
+| 11. Antes do commit | `engineering-advanced-skills:ship-gate` | Checagem final (build limpo, nada sensível, README coerente). |
+
+### Não usar (e por quê)
+
+- `website-design:landing-page` e `product-skills:landing-page-generator`: o portfólio não é
+  página de produto; puxam para hero com CTA de venda e bloco de depoimentos.
+- Skills de `marketing-skills` de conversão (`page-cro`, `popup-cro`, `ab-test-setup`): não há funil.
+- `design-skills:design-elevation` / `ui-ux-pro-max:ui-ux-pro-max` como direção principal: duplicam
+  a decisão da seção 5 e tendem a levar de volta ao visual de template.
+
+### Ordem prática
+
+1. `diagnostico-projeto` → ler os 3 READMEs → perguntas ao Samuel (tarefa 2).
+2. `hallmark` + `website-design:design-system` → fechar `DESIGN.md` **antes** de mexer em componente.
+3. `copywriting` + `ux-writing` → textos em `profile.js` e `projects.js`.
+4. `frontend-design` + `layout-tela-cheia` (+ `interaction-design`, `i18n`) → componentes.
+5. `seo-audit` + `schema-markup` → `index.html`.
+6. `accessibility-audit` → `full-page-screenshot` → `web-review` → `copy-editing` → `ship-gate`.
