@@ -17,8 +17,9 @@ O site atual é bem feito tecnicamente, mas é o tema "terminal hacker" genéric
 **engenharia e análise de dados**: lakehouse com dbt/Airflow/DuckDB e uma pesquisa estatística
 honesta sobre estratégias de cripto.
 
-> **Fora do portfólio por decisão do Samuel:** PartilharTela, Arquivo de Investigadores
-> (cutulu-fichas), Despachante e Clara. Não citar esses projetos em nenhum lugar do site.
+> **Decisão do Samuel:** o site mostra **só 3 projetos**: Crypto Analyzer, Crypto Lakehouse e
+> Economic Risk Monitor. Sem lista de "outros projetos", sem arquivo. Nenhum outro projeto é
+> citado (no máximo um link "mais no GitHub" para o perfil).
 
 ---
 
@@ -28,7 +29,7 @@ honesta sobre estratégias de cripto.
 
 | # | Onde | Problema | Por que importa |
 |---|---|---|---|
-| A1 | `src/data/projects.js` | Só 4 projetos, todos de jan–mai/2026. Faltam Crypto Analyzer, Crypto Lakehouse e Deal Hunter. | O recrutador vê um estudante de "bot de Telegram e CRUD Flask", não alguém que monta lakehouse com dbt/Airflow e faz pesquisa quantitativa com bootstrap e correção de testes múltiplos. |
+| A1 | `src/data/projects.js` | Só 4 projetos, todos de jan–mai/2026. Faltam Crypto Analyzer e Crypto Lakehouse, os mais fortes. | O recrutador vê um estudante de "bot de Telegram e CRUD Flask", não alguém que monta lakehouse com dbt/Airflow e faz pesquisa quantitativa com bootstrap e correção de testes múltiplos. |
 | A2 | `Hero.jsx`, `Footer.jsx`, `Navbar.jsx` | Dados inventados: `latency 12ms`, `uptime active`, `session: persistent · build: stable`, linhas `[ OK ] loading kernel modules`, relógio ao vivo `FOR_BR`. | Enfeite que finge ser informação. Lê como template. |
 | A3 | `src/data/skills.js`, `Skills.jsx` | Barras de porcentagem auto-atribuídas (Python 92%, Wireshark 65%…). | Números sem base; recrutador ignora ou desconfia. É o anti-padrão mais citado em portfólio. |
 | A4 | Todos os componentes (`max-w-7xl`) | Conteúdo numa coluna de 1280px; em 1920px sobram **315px vazios de cada lado**. | Viola a regra `layout-tela-cheia`. |
@@ -68,20 +69,18 @@ honesta sobre estratégias de cripto.
 Fatos tirados dos projetos; usar estes, não inventar:
 
 - Estudante de Ciência da Computação em **Fortaleza/CE**, procurando estágio.
-- Foco: **engenharia de dados** (principal), **automação/backend** e **segurança de redes**.
+- Foco: **engenharia e análise de dados**.
 - **Rigor e honestidade com dados**: o Crypto Analyzer escreve o protocolo antes de rodar, compara com
   "comprar e segurar" e com o acaso, usa bootstrap e correção para testes múltiplos, e conclui que
   "quase nada vence comprar e segurar". Mostra o que não funciona e por quê.
 - **Arquitetura medalhão** é recorrente: Crypto Lakehouse (dbt + DuckDB + Airflow + MinIO + Databricks)
   e Economic Risk Monitor (World Bank API → raw/silver/gold → Streamlit).
-- **Automação que filtra ruído**: Deal Hunter responde "esse produto está barato mesmo?" com histórico
-  de preço, e só avisa no Telegram o que vale a pena.
 - Testa o que faz: pytest, testes dbt (not_null, unique, relationships), CI no GitHub Actions.
 
 **Frase de posicionamento sugerida (hero):**
-> "Engenharia de dados com método: pipelines testados, análises honestas e automações que só avisam o que importa."
+> "Engenharia de dados com método: pipelines testados e análises honestas."
 
-(Versão EN: "Data engineering with method: tested pipelines, honest analysis and automations that only flag what matters.")
+(Versão EN: "Data engineering with method: tested pipelines and honest analysis.")
 
 ---
 
@@ -90,31 +89,15 @@ Fatos tirados dos projetos; usar estes, não inventar:
 Todos os caminhos são relativos a `D:\Downloads\pastas codigo\`. **Leia o README de cada um
 antes de escrever o texto** e confira números (versão, commits, nº de respostas) direto na fonte.
 
-### Destaques (estudo de caso, com imagem grande)
+### Os 3 projetos (estudo de caso, com imagem grande)
 
 | Ordem | Projeto | Pasta / repo | Por que é destaque | Stack | Link |
 |---|---|---|---|---|---|
 | 1 | **Crypto Analyzer** | `projeto cripto/crypto-analyzer` · cripto-analysis (**privado**) | A história mais marcante: testa 14 regras de trading contra "comprar e segurar" com protocolo escrito antes, bootstrap e correção para testes múltiplos. Nenhuma venceu; três foram piores. A média de 200 dias baixou a queda máxima média de 80% para 65% (47 moedas, 2017–2024). Painel web, resumo diário no Telegram, CI. Já tem gráficos prontos em `docs/img/`. | Python, estatística, Parquet, ML, CI, Telegram | Pedir ao Samuel para tornar público; senão "código sob pedido" |
 | 2 | **Crypto Lakehouse** | `projeto_engenharia_de_dados` · crypto-lakehouse-medallion (público) | Engenharia de dados completa: ingestão idempotente da CoinGecko no MinIO (S3), silver/gold em dbt + DuckDB, star schema, DAGs no Airflow, envio para Databricks (Delta), testes dbt e unitários. É o projeto que mais casa com vaga de dados. | Python, dbt, DuckDB, Airflow, MinIO, Databricks, Docker | Repo |
 | 3 | **Economic Risk Monitor** | `worldbank-api` · Economic-Risk-Monitor (público) | Pipeline com a API do Banco Mundial em raw → silver → gold, nota de risco econômico por país, validação de qualidade, dashboard Streamlit, pytest. | Python, SQL, SQLite, pandas, Streamlit, Plotly, pytest | Repo (+ prints do dashboard em `img/`) |
-| 4 | **Deal Hunter** | `Deal-Hunter` · Deal-Hunter (público) | Automação com critério: coleta ofertas (crawler da KaBuM), normaliza, guarda histórico de preço e pontua a oferta para responder "está barato mesmo?". Só notifica no Telegram o que passa no filtro; roda 1×/dia em vez de 24h. | Python, web scraping, SQLite, Telegram, uv | Repo |
-| 5 | **Network Security Monitor** | Network-Security-Monitor (público) + `Sentinel Lite` (público) | Segurança na prática: descoberta de hosts (IP, MAC, fabricante), scan de portas, sniffer, detector de port scan e hosts novos, gestão de alertas com falso positivo e lista negra. O Sentinel Lite é a evolução em camadas (models/repositories/services + dashboard). Mostrar como um caso só. | Python, Scapy, SQLite, redes | Repos |
 
-### Outros projetos (lista compacta, sem imagem grande)
-
-- **ETL de vendas (teste técnico de estágio)** (`teste tecnico estagio dados`, privado): extrair → transformar → carregar em PostgreSQL no Docker, com gerador de dados. *Não mostrar as credenciais do README.* Perguntar ao Samuel se pode citar a empresa.
-- **Supabase + Z-API Messenger** (público): busca contatos no Supabase e envia mensagens personalizadas pelo WhatsApp (Z-API). Feito para processo seletivo.
-- **Task Manager REST API** (público): Flask, SQLAlchemy, PostgreSQL, Docker, Blueprints.
-- **Vagas TI Bot** (público): scraping de concursos de TI, deduplicação em SQLite, aviso no Telegram.
-
-### Arquivo (só nome + link, ou sai)
-
-YouTube Audio Downloader, Estoque RAD, exercícios de POO/C# (Rent Cars, Banco Financeiro, BuscarCep).
-Ficam numa linha "mais no GitHub" ou não aparecem.
-
-**Não colocar:** PartilharTela, Arquivo de Investigadores, Despachante, Clara (decisão do Samuel),
-projetos de RPG (Assimilação, worldforge, RPG SITE), Acad, Financeiro, pdfs, aumentarqualidadefotos,
-candidatura, tradução, projeto sk, servidor Minecraft.
+São só estes 3. Não acrescentar nenhum outro projeto, nem em lista compacta.
 
 ### Formato de cada estudo de caso
 
@@ -163,7 +146,8 @@ rigoroso, achado honesto.
   com: cidade, curso, status "procurando estágio", foco, links (GitHub, LinkedIn, e-mail, CV).
 - **Casos (≥1400px):** cada destaque em grid de 12 colunas: número/metadados (2 col), texto
   (4 col), imagem (6 col); alternar o lado da imagem. ≥1000px: texto + imagem lado a lado.
-- **Outros projetos:** tabela/índice de largura total (nome · o que faz · stack · ano · link).
+- Com só 3 casos, cada um ganha uma "página" dentro da página: ocupa a largura toda, imagem grande,
+  e o Crypto Analyzer pode trazer 2–3 gráficos dos achados lado a lado.
 - **Sobre + stack:** duas/três colunas: texto curto, "o que uso" agrupado **sem porcentagem**
   (ex.: "uso todo dia / já entreguei projeto / estudando"), "agora" (o que está construindo).
 - **Contato:** faixa de ponta a ponta com o e-mail grande e clicável.
@@ -175,10 +159,9 @@ rigoroso, achado honesto.
 
 1. **Navbar** fina: "Samuel Mendes" · Projetos · Sobre · Contato · CV · alternar PT/EN.
 2. **Hero**: nome, frase de posicionamento (seção 3), ficha lateral, 2 ações: *Ver projetos* (principal) e *E-mail*.
-3. **Casos** (5 destaques, seção 4).
-4. **Outros projetos** (índice).
-5. **Sobre**: 3–4 frases na voz dele (Fortaleza, CC, foco em dados, gosta de testar hipótese antes de acreditar nela, pipelines com teste) + stack agrupada + "Agora": o que está fazendo neste mês.
-6. **Contato** + rodapé simples (ano, cidade, link do código do site).
+3. **Casos** (os 3 projetos, seção 4) + link discreto "mais no GitHub".
+4. **Sobre**: 3–4 frases na voz dele (Fortaleza, CC, foco em dados, gosta de testar hipótese antes de acreditar nela, pipelines com teste) + stack agrupada + "Agora": o que está fazendo neste mês.
+5. **Contato** + rodapé simples (ano, cidade, link do código do site).
 
 **Idioma:** site principal em **inglês** (como hoje) com alternância para **português**
 (dicionário simples em `src/i18n.js`, escolha salva em `localStorage` com try/catch).
@@ -188,13 +171,13 @@ rigoroso, achado honesto.
 
 ## 7. Tarefas para o Sonnet (em ordem)
 
-1. **Ler** os READMEs dos 5 destaques e dos 4 secundários (caminhos na seção 4). Anotar só fatos verificáveis.
-2. **Perguntar ao Samuel** (de uma vez só): e-mail certo; se o CV volta (e se o PDF está atualizado); se torna o Crypto Analyzer público; se pode citar a empresa do teste técnico; PT/EN ou um idioma.
+1. **Ler** os READMEs dos 3 projetos (caminhos na seção 4). Anotar só fatos verificáveis.
+2. **Perguntar ao Samuel** (de uma vez só): e-mail certo; se o CV volta (e se o PDF está atualizado); se torna o Crypto Analyzer público; PT/EN ou um idioma.
 3. **Limpeza:** remover `Resume.jsx` se o CV não voltar (ou virar link no topo), `class="bg-slate-950"`, relógio, boot, footer falso, `skills.js` com %. Corrigir README (base, nome do PDF, um só caminho de deploy).
 4. **Dados:** reescrever `src/data/projects.js` no formato da seção 4; criar `src/data/profile.js` (nome, frase, links, "agora").
-5. **Imagens:** criar `public/projects/<slug>.webp` (≤ 200 KB, 1600px de largura). Prints reais: gráficos de `projeto cripto/crypto-analyzer/docs/img/`, dashboard do Economic Risk Monitor (`worldbank-api/img/`), diagrama de arquitetura e ingestão em `projeto_engenharia_de_dados/img/` (`crypto-lakehouse-architecture.png`, `coingecko-ingestion.png`). Para Deal Hunter e Network Security Monitor, print do terminal/dashboard rodando ou diagrama do fluxo. Se não der para gerar algum print, usar placeholder tipográfico (nome + número do caso), nunca imagem de banco.
+5. **Imagens:** criar `public/projects/<slug>.webp` (≤ 200 KB, 1600px de largura). Prints reais: gráficos de `projeto cripto/crypto-analyzer/docs/img/`, dashboard do Economic Risk Monitor (`worldbank-api/img/`), diagrama de arquitetura e ingestão em `projeto_engenharia_de_dados/img/` (`crypto-lakehouse-architecture.png`, `coingecko-ingestion.png`). Se não der para gerar algum print, usar placeholder tipográfico (nome + número do caso), nunca imagem de banco.
 6. **Design system:** tokens novos em `index.css` + `tailwind.config.js` (cores, fontes, espaçamento), fontes via `<link>` no `index.html`.
-7. **Componentes:** `Navbar`, `Hero`, `CaseStudy`, `ProjectIndex`, `About`, `Contact`, `Footer`. Apagar os que não forem usados.
+7. **Componentes:** `Navbar`, `Hero`, `CaseStudy`, `About`, `Contact`, `Footer`. Apagar os que não forem usados.
 8. **SEO/compartilhamento:** favicon (SVG com as iniciais), `og:image` 1200×630, `og:title`, `og:description`, `theme-color`, `lang` certo ao trocar idioma.
 9. **Acessibilidade:** contraste ≥ 4,5:1, foco visível, `aria-expanded` no menu, `alt` descritivo nas imagens, texto mínimo 14px, `prefers-reduced-motion`.
 10. **Verificar:** `npm run build` sem erro; screenshots em **1920, 1280 e 375px** (laterais preenchidas, sem rolagem horizontal, nome + ação na 1ª tela do celular); todos os links abrem; rodar a skill `web-review`.
@@ -204,7 +187,7 @@ rigoroso, achado honesto.
 
 ## 8. Critério de pronto
 
-- [ ] Os 5 destaques aparecem com imagem, problema, o que foi feito, achado/decisão técnica e links que funcionam.
+- [ ] Só os 3 projetos aparecem (nenhum outro citado), cada um com imagem, problema, o que foi feito, achado/decisão técnica e links que funcionam.
 - [ ] Nenhum número inventado na página (nada de %, latência, uptime).
 - [ ] Em 1920px, nenhuma lateral vazia > ~10% da largura.
 - [ ] Em 375px, nome + frase + "Ver projetos" visíveis sem rolar; sem rolagem horizontal.
