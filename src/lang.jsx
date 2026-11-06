@@ -16,13 +16,15 @@ const readStored = () => {
 };
 
 const buildProfile = (lang) => {
-  if (lang === "en") return profileEn;
-  return {
-    ...profileEn,
-    ...profilePt,
-    ficha: profilePt.ficha,
-    stack: profileEn.stack.map((g) => ({ ...g, grupo: profilePt.stackGrupos[g.grupo] ?? g.grupo })),
-  };
+  const base =
+    lang === "en"
+      ? profileEn
+      : {
+          ...profileEn,
+          ...profilePt,
+          skills: profileEn.skills.map((g) => ({ ...g, titulo: profilePt.skills[g.id] ?? g.titulo })),
+        };
+  return { ...base, links: { ...profileEn.links, cv: profileEn.links.cv[lang] } };
 };
 
 const buildProjects = (lang) => {

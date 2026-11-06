@@ -15,11 +15,12 @@ npm run preview    # serve the production build
 
 ## Project structure
 
-- `src/components`: Navbar, Hero, Projects, CaseStudy, About, Contact, Footer
-- `src/data/profile.js`: name, tagline, links, about text, stack groups and "Now"
+- `src/components`: Navbar, Hero, Skills, TechIcon (logos), Projects, CaseStudy, Contact, Footer
+- `src/lang.jsx` and `src/data/pt.js`: EN/PT switch and the Portuguese texts
+- `src/data/profile.js`: name, tagline, links and skill groups (same list as the CV)
 - `src/data/projects.js`: the three case studies (question, what was done, finding, stack, images, links)
 - `public/projects/*.webp`: project images (1600px wide, under 200 KB)
-- `public/resume_samuel.pdf`: CV linked from the navbar, hero and contact
+- `public/resume_samuel_en.pdf` and `public/resume_samuel_pt.pdf`: CVs, the link follows the selected language
 - `public/og.png`, `public/favicon.svg`: link preview and tab icon
 
 ## Deployment (GitHub Pages)

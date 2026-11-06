@@ -1,27 +1,19 @@
 // Traduções em português. Só texto: imagens, links e stack vêm dos arquivos base.
 
 export const profilePt = {
-  frase: "Engenharia de dados com método: pipelines testados e análises honestas.",
+  frase: "Engenharia de dados, ciência de dados e machine learning.",
   ficha: [
     { k: "Cidade", v: "Fortaleza, CE, Brasil" },
-    { k: "Estudo", v: "Ciência da Computação" },
-    { k: "Foco", v: "Pipelines, estatística, qualidade de dados" },
+    { k: "Atual", v: "Estagiário de Engenharia de Dados, Unitech \u2013 Unimed" },
+    { k: "Curso", v: "Ciência da Computação, Estácio" },
+    { k: "Foco", v: "Dados, inteligência artificial, estatística" },
   ],
-  sobre: [
-    "Sou estudante de Ciência da Computação em Fortaleza, com foco em engenharia de dados.",
-    "Escrevo a pergunta e o teste antes de rodar a análise, comparo o resultado com uma referência simples e conto o que não funcionou. O Crypto Analyzer terminou com “quase nada vence comprar e segurar”, e esse é o resultado que publiquei.",
-    "Meus pipelines seguem o padrão medalhão (raw, silver, gold) e vêm com testes: checagens do dbt, pytest e CI.",
-  ],
-  stackGrupos: {
-    Analysis: "Análise",
-    Pipelines: "Pipelines",
-    Quality: "Qualidade",
-    Delivery: "Entrega",
-  },
+  skills: { languages: "Linguagens", data: "Dados", tools: "Ferramentas" },
 };
 
 export const projectsPt = {
   "crypto-analyzer": {
+    curto: "Testa 14 regras de trading contra comprar e segurar. Quase nenhuma vence.",
     curto: "Testa 14 regras de trading contra comprar e segurar. Quase nenhuma vence.",
     resumo:
       "Uma regra de trading consegue vencer simplesmente comprar e segurar uma criptomoeda? Testei com protocolo escrito, não com palpite.",
@@ -53,6 +45,7 @@ export const projectsPt = {
   },
   "crypto-lakehouse": {
     curto: "Pipeline idempotente: CoinGecko para MinIO, dbt + DuckDB, Airflow e Databricks.",
+    curto: "Pipeline idempotente: CoinGecko para MinIO, dbt + DuckDB, Airflow e Databricks.",
     resumo:
       "Como coletar dados de mercado de um jeito que dê para reprocessar, testar e reconstruir sem duplicar nada?",
     feitos: [
@@ -67,6 +60,7 @@ export const projectsPt = {
     legenda: "A camada gold: star schema.",
   },
   "economic-risk-monitor": {
+    curto: "Dados do Banco Mundial em raw, silver e gold, até uma nota de risco e um dashboard Streamlit.",
     curto: "Dados do Banco Mundial em raw, silver e gold, até uma nota de risco e um dashboard Streamlit.",
     resumo:
       "Qual de cinco economias carrega mais risco econômico, segundo os dados do Banco Mundial de 2010 a 2023?",
@@ -92,21 +86,21 @@ export const projectsPt = {
 export const ui = {
   en: {
     lang: "en",
-    nav: { projects: "Projects", about: "About", contact: "Contact", cv: "CV", menu: "Menu", close: "Close", switchTo: "Português", switchLabel: "Ver o site em português" },
+    nav: { skills: "Skills", projects: "Projects", contact: "Contact", cv: "CV", menu: "Menu", close: "Close", switchTo: "Português", switchLabel: "Ver o site em português" },
     hero: { view: "View projects", email: "Email me", cv: "CV (PDF)" },
     projects: { title: "Three projects, each with a question, a method and a finding", more: "More on GitHub", did: "What I did", caso: "Case", code: "Source code", demo: "Live demo", releases: "Releases", ask: "Ask for access", more_: "Details", less: "Hide", askSubject: "Code for", stack: "Stack" },
     status: { active: "Ongoing", study: "Study", done: "Done" },
-    about: { title: "About", use: "What I use" },
+    skills: { title: "What I work with" },
     contact: { title: "Contact" },
     footer: { place: "Fortaleza, Brazil", source: "Site source" },
   },
   pt: {
     lang: "pt-BR",
-    nav: { projects: "Projetos", about: "Sobre", contact: "Contato", cv: "CV", menu: "Menu", close: "Fechar", switchTo: "English", switchLabel: "View the site in English" },
+    nav: { skills: "Habilidades", projects: "Projetos", contact: "Contato", cv: "CV", menu: "Menu", close: "Fechar", switchTo: "English", switchLabel: "View the site in English" },
     hero: { view: "Ver projetos", email: "Enviar e-mail", cv: "CV (PDF)" },
     projects: { title: "Três projetos, cada um com pergunta, método e achado", more: "Mais no GitHub", did: "O que eu fiz", caso: "Caso", code: "Código", demo: "Demo", releases: "Releases", ask: "Pedir acesso", more_: "Detalhes", less: "Ocultar", askSubject: "Código de", stack: "Stack" },
     status: { active: "Em andamento", study: "Estudo", done: "Concluído" },
-    about: { title: "Sobre", use: "O que eu uso" },
+    skills: { title: "Com o que eu trabalho" },
     contact: { title: "Contato" },
     footer: { place: "Fortaleza, Brasil", source: "Código do site" },
   },

@@ -1,6 +1,7 @@
 import { useId, useState } from "react";
 import { ChevronDown, ExternalLink } from "lucide-react";
 import { useLang } from "../lang";
+import { StackChip, StackIcons } from "./TechIcon";
 
 const Figure = ({ src, alt, legenda }) => (
   <figure className="figure">
@@ -32,8 +33,11 @@ const CaseStudy = ({ projeto }) => {
           <span className="proj__main">
             <span className="proj__title">{titulo}</span>
             <span className="proj__sum">{curto}</span>
-            <span className="proj__meta mono muted">
-              {ano} · {t.status[status]} · {stack.slice(0, 4).join(" · ")}
+            <span className="proj__meta">
+              <span className="mono muted">
+                {ano} · {t.status[status]}
+              </span>
+              <StackIcons stack={stack} />
             </span>
           </span>
           <img className="proj__thumb" src={imagem} alt="" loading="lazy" decoding="async" width="320" height="180" />
@@ -61,7 +65,7 @@ const CaseStudy = ({ projeto }) => {
 
             <ul className="chips" aria-label={t.projects.stack}>
               {stack.map((item) => (
-                <li key={item}>{item}</li>
+                <StackChip key={item} nome={item} />
               ))}
             </ul>
 

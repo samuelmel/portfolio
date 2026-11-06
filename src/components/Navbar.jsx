@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLang } from "../lang";
 
-const ids = ["projects", "about", "contact"];
+const ids = ["skills", "projects", "contact"];
 
 const Navbar = () => {
   const { t, profile, toggle } = useLang();
