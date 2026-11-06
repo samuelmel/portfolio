@@ -9,6 +9,7 @@ export const projects = [
     titulo: "Crypto Analyzer",
     resumo:
       "Can a trading rule beat simply buying and holding a cryptocurrency? I tested it with a written protocol instead of a hunch.",
+    curto: "Tests 14 trading rules against buy and hold. Almost none win.",
     feitos: [
       "Tested 14 trading rules (trend, breakout, momentum, RSI, Bollinger, coin selection) against buy and hold, with the protocol written before running.",
       "Used bootstrap confidence intervals and a correction for multiple tests, so a lucky rule does not pass as a discovery.",
@@ -50,6 +51,7 @@ export const projects = [
     titulo: "Crypto Lakehouse",
     resumo:
       "How do you collect market data so it can be reprocessed, tested and rebuilt without duplicates?",
+    curto: "Idempotent pipeline: CoinGecko to MinIO, dbt + DuckDB, Airflow and Databricks.",
     feitos: [
       "Idempotent ingestion from the CoinGecko API into MinIO (S3-compatible), with deterministic keys for the raw layer.",
       "Silver and gold layers in dbt + DuckDB, written as Parquet, with a star schema: two dimensions, a price fact table and a daily volatility aggregate.",
@@ -78,6 +80,7 @@ export const projects = [
     titulo: "Economic Risk Monitor",
     resumo:
       "Which of five economies carries more economic risk, according to World Bank data from 2010 to 2023?",
+    curto: "World Bank data through raw, silver and gold into a risk score and a Streamlit dashboard.",
     feitos: [
       "Extracted five indicators from the World Bank API (GDP, GDP per capita, inflation, unemployment, population) for Brazil, the United States, Argentina, Germany and China.",
       "Moved the data through raw, silver and gold layers into SQLite, with data quality checks between layers.",

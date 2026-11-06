@@ -1,118 +1,111 @@
-import { useEffect, useRef } from "react";
-import { ExternalLink } from "lucide-react";
+import { useId, useState } from "react";
+import { ChevronDown, ExternalLink } from "lucide-react";
 import { useLang } from "../lang";
 
-const useReveal = () => {
-  const ref = useRef(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return undefined;
-    if (!("IntersectionObserver" in window)) {
-      el.setAttribute("data-in", "");
-      return undefined;
-    }
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.setAttribute("data-in", "");
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "0px 0px -8% 0px" },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-  return ref;
-};
-
-const Figure = ({ src, alt, legenda, eager }) => (
+const Figure = ({ src, alt, legenda }) => (
   <figure className="figure">
-    <img
-      src={src}
-      alt={alt}
-      loading={eager ? "eager" : "lazy"}
-      decoding="async"
-      width="1600"
-    />
+    <img src={src} alt={alt} loading="lazy" decoding="async" width="1600" />
     <figcaption>{legenda}</figcaption>
   </figure>
 );
 
-const CaseStudy = ({ projeto, flip }) => {
+const CaseStudy = ({ projeto }) => {
   const { t, profile } = useLang();
-  const textRef = useReveal();
-  const { numero, ano, status, titulo, resumo, feitos, decisaoRotulo, decisao, stack } = projeto;
+  const [open, setOpen] = useState(false);
+  const panelId = useId();
+  const { numero, ano, status, titulo, curto, feitos, decisaoRotulo, decisao, stack } = projeto;
   const { imagem, alt, legenda, galeria, links, codigoNota } = projeto;
 
   return (
-    <article id={projeto.slug} className={`case${flip ? " case--flip" : ""}`}>
-      <div className="case__text" ref={textRef} data-reveal>
-        <div className="case__meta">
-          <span className="case__number" aria-hidden="true">
+    <article id={projeto.slug} className="proj" data-open={open}>
+      <h3 className="proj__heading">
+        <button
+          type="button"
+          className="proj__head"
+          aria-expanded={open}
+          aria-controls={panelId}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span className="proj__num" aria-hidden="true">
             {numero}
           </span>
-          <span className="mono muted">{t.projects.caso} {numero} · {ano}</span>
-          <span className="stamp">{t.status[status]}</span>
+          <span className="proj__main">
+            <span className="proj__title">{titulo}</span>
+            <span className="proj__sum">{curto}</span>
+            <span className="proj__meta mono muted">
+              {ano} · {t.status[status]} · {stack.slice(0, 4).join(" · ")}
+            </span>
+          </span>
+          <img className="proj__thumb" src={imagem} alt="" loading="lazy" decoding="async" width="320" height="180" />
+          <span className="proj__toggle">
+            {open ? t.projects.less : t.projects.more_}
+            <ChevronDown size={18} aria-hidden="true" />
+          </span>
+        </button>
+      </h3>
+
+      <div id={panelId} className="proj__panel" hidden={!open}>
+        <div className="proj__cols">
+          <div>
+            <h4 className="label">{t.projects.did}</h4>
+            <ul className="dashed">
+              {feitos.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="label">{decisaoRotulo}</h4>
+            <p className="case__finding">{decisao}</p>
+
+            <ul className="chips" aria-label={t.projects.stack}>
+              {stack.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+
+            <div className="case__links">
+              {links.codigo && (
+                <a className="link" href={links.codigo} target="_blank" rel="noreferrer">
+                  {t.projects.code} <ExternalLink size={16} aria-hidden="true" />
+                </a>
+              )}
+              {links.demo && (
+                <a className="link" href={links.demo} target="_blank" rel="noreferrer">
+                  {t.projects.demo} <ExternalLink size={16} aria-hidden="true" />
+                </a>
+              )}
+              {links.releases && (
+                <a className="link" href={links.releases} target="_blank" rel="noreferrer">
+                  {t.projects.releases} <ExternalLink size={16} aria-hidden="true" />
+                </a>
+              )}
+              {codigoNota && (
+                <>
+                  <span className="muted">{codigoNota}</span>
+                  <a
+                    className="link"
+                    href={`mailto:${profile.links.email}?subject=${encodeURIComponent(`${t.projects.askSubject} ${titulo}`)}`}
+                  >
+                    {t.projects.ask}
+                  </a>
+                </>
+              )}
+            </div>
+          </div>
+
+          <Figure src={imagem} alt={alt} legenda={legenda} />
         </div>
 
-        <h3 className="case__title">{titulo}</h3>
-        <p className="case__question">{resumo}</p>
-
-        <h4 className="label">{t.projects.did}</h4>
-        <ul className="dashed">
-          {feitos.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-
-        <h4 className="label">{decisaoRotulo}</h4>
-        <p className="case__finding">{decisao}</p>
-
-        <ul className="chips" aria-label={t.projects.stack}>
-          {stack.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-
-        <div className="case__links">
-          {links.codigo && (
-            <a className="link" href={links.codigo} target="_blank" rel="noreferrer">
-              {t.projects.code} <ExternalLink size={16} aria-hidden="true" />
-            </a>
-          )}
-          {links.demo && (
-            <a className="link" href={links.demo} target="_blank" rel="noreferrer">
-              {t.projects.demo} <ExternalLink size={16} aria-hidden="true" />
-            </a>
-          )}
-          {links.releases && (
-            <a className="link" href={links.releases} target="_blank" rel="noreferrer">
-              {t.projects.releases} <ExternalLink size={16} aria-hidden="true" />
-            </a>
-          )}
-          {codigoNota && (
-            <>
-              <span className="muted">{codigoNota}</span>
-              <a className="link" href={`mailto:${profile.links.email}?subject=${encodeURIComponent(`${t.projects.askSubject} ${titulo}`)}`}>
-                {t.projects.ask}
-              </a>
-            </>
-          )}
-        </div>
+        {galeria.length > 0 && (
+          <div className="proj__gallery">
+            {galeria.map((fig) => (
+              <Figure key={fig.src} {...fig} />
+            ))}
+          </div>
+        )}
       </div>
-
-      <div className="case__media">
-        <Figure src={imagem} alt={alt} legenda={legenda} eager={numero === "01"} />
-      </div>
-
-      {galeria.length > 0 && (
-        <div className={`case__gallery gallery gallery--${galeria.length}`}>
-          {galeria.map((fig) => (
-            <Figure key={fig.src} {...fig} />
-          ))}
-        </div>
-      )}
     </article>
   );
 };

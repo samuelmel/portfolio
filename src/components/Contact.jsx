@@ -8,9 +8,6 @@ const Contact = () => {
       <h2 className="mono muted" style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-sm)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase" }}>
         {t.contact.title}
       </h2>
-      <p style={{ marginTop: "var(--space-sm)", maxWidth: "65ch" }}>
-        {t.contact.text}
-      </p>
       <a className="contact__mail" href={`mailto:${profile.links.email}`}>
         {profile.links.email}
       </a>

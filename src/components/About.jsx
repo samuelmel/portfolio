@@ -31,21 +31,8 @@ const About = () => {
                 </div>
               ))}
             </dl>
-            <p className="muted mono" style={{ marginTop: "var(--space-sm)" }}>
-              {profile.stackNota}
-            </p>
           </div>
 
-          <div>
-            <h3 className="label" style={{ marginTop: 0, fontFamily: "var(--font-mono)" }}>
-              {t.about.now}
-            </h3>
-            <ul className="dashed">
-              {profile.agora.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
     </section>

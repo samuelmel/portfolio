@@ -9,8 +9,8 @@ const Projects = () => {
       <div className="section__head">
         <h2 className="section__title">{t.projects.title}</h2>
       </div>
-      {projects.map((projeto, i) => (
-        <CaseStudy key={projeto.slug} projeto={projeto} flip={i % 2 === 1} />
+      {projects.map((projeto) => (
+        <CaseStudy key={projeto.slug} projeto={projeto} />
       ))}
       <a className="link" href={profile.links.github} target="_blank" rel="noreferrer">
         {t.projects.more}

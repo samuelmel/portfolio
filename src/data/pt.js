@@ -5,11 +5,10 @@ export const profilePt = {
   ficha: [
     { k: "Cidade", v: "Fortaleza, CE, Brasil" },
     { k: "Estudo", v: "Ciência da Computação" },
-    { k: "Procuro", v: "Estágio em engenharia ou análise de dados" },
     { k: "Foco", v: "Pipelines, estatística, qualidade de dados" },
   ],
   sobre: [
-    "Sou estudante de Ciência da Computação em Fortaleza e procuro estágio em engenharia ou análise de dados.",
+    "Sou estudante de Ciência da Computação em Fortaleza, com foco em engenharia de dados.",
     "Escrevo a pergunta e o teste antes de rodar a análise, comparo o resultado com uma referência simples e conto o que não funcionou. O Crypto Analyzer terminou com “quase nada vence comprar e segurar”, e esse é o resultado que publiquei.",
     "Meus pipelines seguem o padrão medalhão (raw, silver, gold) e vêm com testes: checagens do dbt, pytest e CI.",
   ],
@@ -19,15 +18,11 @@ export const profilePt = {
     Quality: "Qualidade",
     Delivery: "Entrega",
   },
-  stackNota: "Tudo o que está listado aqui é usado nos três projetos acima.",
-  agora: [
-    "Ampliando os estudos do Crypto Analyzer. O modelo de IA ainda está em teste e só dá opinião.",
-    "Estudando o lado Databricks do Crypto Lakehouse: tabelas Delta e governança de dados.",
-  ],
 };
 
 export const projectsPt = {
   "crypto-analyzer": {
+    curto: "Testa 14 regras de trading contra comprar e segurar. Quase nenhuma vence.",
     resumo:
       "Uma regra de trading consegue vencer simplesmente comprar e segurar uma criptomoeda? Testei com protocolo escrito, não com palpite.",
     feitos: [
@@ -57,6 +52,7 @@ export const projectsPt = {
     codigoNota: "Repositório privado. Código sob pedido.",
   },
   "crypto-lakehouse": {
+    curto: "Pipeline idempotente: CoinGecko para MinIO, dbt + DuckDB, Airflow e Databricks.",
     resumo:
       "Como coletar dados de mercado de um jeito que dê para reprocessar, testar e reconstruir sem duplicar nada?",
     feitos: [
@@ -71,6 +67,7 @@ export const projectsPt = {
     legenda: "A camada gold: star schema.",
   },
   "economic-risk-monitor": {
+    curto: "Dados do Banco Mundial em raw, silver e gold, até uma nota de risco e um dashboard Streamlit.",
     resumo:
       "Qual de cinco economias carrega mais risco econômico, segundo os dados do Banco Mundial de 2010 a 2023?",
     feitos: [
@@ -97,20 +94,20 @@ export const ui = {
     lang: "en",
     nav: { projects: "Projects", about: "About", contact: "Contact", cv: "CV", menu: "Menu", close: "Close", switchTo: "Português", switchLabel: "Ver o site em português" },
     hero: { view: "View projects", email: "Email me", cv: "CV (PDF)" },
-    projects: { title: "Three projects, each with a question, a method and a finding", more: "More on GitHub", did: "What I did", caso: "Case", code: "Source code", demo: "Live demo", releases: "Releases", ask: "Ask for access", askSubject: "Code for", stack: "Stack" },
+    projects: { title: "Three projects, each with a question, a method and a finding", more: "More on GitHub", did: "What I did", caso: "Case", code: "Source code", demo: "Live demo", releases: "Releases", ask: "Ask for access", more_: "Details", less: "Hide", askSubject: "Code for", stack: "Stack" },
     status: { active: "Ongoing", study: "Study", done: "Done" },
-    about: { title: "About", use: "What I use", now: "Now" },
-    contact: { title: "Contact", text: "I'm looking for an internship in data engineering or analysis. The fastest way to reach me is email." },
+    about: { title: "About", use: "What I use" },
+    contact: { title: "Contact" },
     footer: { place: "Fortaleza, Brazil", source: "Site source" },
   },
   pt: {
     lang: "pt-BR",
     nav: { projects: "Projetos", about: "Sobre", contact: "Contato", cv: "CV", menu: "Menu", close: "Fechar", switchTo: "English", switchLabel: "View the site in English" },
     hero: { view: "Ver projetos", email: "Enviar e-mail", cv: "CV (PDF)" },
-    projects: { title: "Três projetos, cada um com pergunta, método e achado", more: "Mais no GitHub", did: "O que eu fiz", caso: "Caso", code: "Código", demo: "Demo", releases: "Releases", ask: "Pedir acesso", askSubject: "Código de", stack: "Stack" },
+    projects: { title: "Três projetos, cada um com pergunta, método e achado", more: "Mais no GitHub", did: "O que eu fiz", caso: "Caso", code: "Código", demo: "Demo", releases: "Releases", ask: "Pedir acesso", more_: "Detalhes", less: "Ocultar", askSubject: "Código de", stack: "Stack" },
     status: { active: "Em andamento", study: "Estudo", done: "Concluído" },
-    about: { title: "Sobre", use: "O que eu uso", now: "Agora" },
-    contact: { title: "Contato", text: "Procuro estágio em engenharia ou análise de dados. O jeito mais rápido de falar comigo é por e-mail." },
+    about: { title: "Sobre", use: "O que eu uso" },
+    contact: { title: "Contato" },
     footer: { place: "Fortaleza, Brasil", source: "Código do site" },
   },
 };
