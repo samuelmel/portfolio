@@ -2,8 +2,53 @@ const img = (nome) => `${import.meta.env.BASE_URL}projects/${nome}.webp`;
 
 export const projects = [
   {
-    slug: "crypto-analyzer",
+    slug: "predictive-maintenance",
     numero: "01",
+    ano: "2026",
+    status: "active",
+    titulo: "Predictive Maintenance 4.0",
+    curto: "Ranks which engine to service first, combining an LSTM remaining-life model with NLP on work orders.",
+    resumo:
+      "Which engine should maintenance look at first, given how long it will last and what operators write in work orders?",
+    feitos: [
+      "Built the data in bronze, silver and gold layers on NASA C-MAPSS, with checksums on the original files and a train/validation split per engine, so windows from one engine never leak across the split.",
+      "Trained an LSTM for remaining useful life and a work-order severity classifier (TF-IDF baseline and DistilBERT exported to ONNX), and a rule that merges both into one priority score.",
+      "Served it with FastAPI and ONNX Runtime in Docker, monitored with Prometheus and Grafana (sensor drift, 4 alerts, retraining trigger), with 112 automated tests and CI.",
+    ],
+    decisaoRotulo: "Finding",
+    decisao:
+      "On the FD001 engines the Random Forest (RMSE 11.96) beat the LSTM (13.13 to 13.42) after five attempts to improve it, and DistilBERT only tied the TF-IDF baseline. Both results are in the repository. The work orders are generated, because there is no public Portuguese set, and the docs say so.",
+    stack: ["Python", "Keras", "scikit-learn", "spaCy", "ONNX", "FastAPI", "Prometheus", "Grafana", "Docker", "pytest"],
+    imagem: img("predictive-maintenance-grafana"),
+    alt: "Grafana dashboard with the maintenance queue ranked by priority, remaining useful life, sensor drift, severity, latency and F1.",
+    legenda: "The Grafana dashboard: the maintenance queue at the top.",
+    galeria: [
+      {
+        src: img("predictive-maintenance-rul"),
+        alt: "Bar chart of RMSE for the constant mean, the Random Forest and the LSTM. The Random Forest has the lowest error.",
+        legenda: "Remaining life: the Random Forest beats the LSTM.",
+      },
+      {
+        src: img("predictive-maintenance-triagem"),
+        alt: "Confusion matrix of the work order triage across four severity levels. Errors concentrate between neighboring levels.",
+        legenda: "Triage: errors stay between neighboring severities.",
+      },
+      {
+        src: img("predictive-maintenance-alertas"),
+        alt: "Grafana alert rules with sensor drift, critical remaining life and the F1 drop firing.",
+        legenda: "Alerts loaded from files, firing during a drift test.",
+      },
+    ],
+    links: {
+      demo: null,
+      codigo: "https://github.com/samuelmel/manutencao-preditiva",
+      releases: null,
+    },
+    destaque: true,
+  },
+  {
+    slug: "crypto-analyzer",
+    numero: "02",
     ano: "2026",
     status: "active",
     titulo: "Crypto Analyzer",
@@ -41,35 +86,6 @@ export const projects = [
     ],
     links: { demo: null, codigo: null, releases: null },
     codigoNota: "Private repository. Code on request.",
-    destaque: true,
-  },
-  {
-    slug: "crypto-lakehouse",
-    numero: "02",
-    ano: "2026",
-    status: "study",
-    titulo: "Crypto Lakehouse",
-    resumo:
-      "How do you collect market data so it can be reprocessed, tested and rebuilt without duplicates?",
-    curto: "Idempotent pipeline: CoinGecko to MinIO, dbt + DuckDB, Airflow and Databricks.",
-    feitos: [
-      "Idempotent ingestion from the CoinGecko API into MinIO (S3-compatible), with deterministic keys for the raw layer.",
-      "Silver and gold layers in dbt + DuckDB, written as Parquet, with a star schema: two dimensions, a price fact table and a daily volatility aggregate.",
-      "Airflow DAGs for ingestion, the silver-to-gold run and the upload of gold files to Databricks, where a PySpark notebook creates Delta tables.",
-    ],
-    decisaoRotulo: "Decision",
-    decisao:
-      "Raw data stays untouched, so every later layer can be rebuilt. Quality is checked at each step: dbt tests for not_null, unique and relationships, plus unit tests with mocked S3 and HTTP and a check that reprocessing creates no duplicates.",
-    stack: ["Python", "dbt", "DuckDB", "Airflow", "MinIO", "Parquet", "Databricks", "Docker"],
-    imagem: img("crypto-lakehouse-arquitetura"),
-    alt: "Star schema diagram with dim_cryptos, dim_calendario, fact_precos_mercado and agg_volatilidade_diaria.",
-    legenda: "The gold layer: star schema.",
-    galeria: [],
-    links: {
-      demo: null,
-      codigo: "https://github.com/samuelmel/crypto-lakehouse-medallion",
-      releases: null,
-    },
     destaque: true,
   },
   {

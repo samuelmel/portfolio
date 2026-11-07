@@ -12,6 +12,35 @@ export const profilePt = {
 };
 
 export const projectsPt = {
+  "predictive-maintenance": {
+    curto: "Define qual motor revisar primeiro, juntando um modelo LSTM de vida útil com PLN nas ordens de serviço.",
+    resumo:
+      "Qual motor a manutenção deve olhar primeiro, considerando quanto tempo ele ainda dura e o que os operadores escrevem nas ordens de serviço?",
+    feitos: [
+      "Montei os dados em camadas bronze, silver e gold sobre o NASA C-MAPSS, com checksums nos arquivos originais e divisão treino/validação por motor, para que janelas de um motor nunca vazem entre os conjuntos.",
+      "Treinei um LSTM de vida útil restante e um classificador de gravidade das ordens (TF-IDF de referência e DistilBERT exportado para ONNX), e uma regra que junta os dois em uma nota de prioridade.",
+      "Servi tudo com FastAPI e ONNX Runtime em Docker, monitorado com Prometheus e Grafana (drift dos sensores, 4 alertas, gatilho de retreino), com 112 testes automatizados e CI.",
+    ],
+    decisaoRotulo: "Achado",
+    decisao:
+      "Nos motores do FD001, o Random Forest (RMSE 11,96) venceu o LSTM (13,13 a 13,42) depois de cinco tentativas de melhorar o LSTM, e o DistilBERT só empatou com o TF-IDF. Os dois resultados estão no repositório. As ordens de serviço são geradas, porque não existe base pública em português, e a documentação diz isso.",
+    alt: "Painel do Grafana com a fila de manutenção por prioridade, vida útil restante, drift dos sensores, gravidade, latência e F1.",
+    legenda: "O painel do Grafana: a fila de manutenção no topo.",
+    galeria: [
+      {
+        alt: "Gráfico de barras do RMSE da média constante, do Random Forest e do LSTM. O Random Forest tem o menor erro.",
+        legenda: "Vida útil: o Random Forest vence o LSTM.",
+      },
+      {
+        alt: "Matriz de confusão da triagem das ordens de serviço em quatro níveis de gravidade. Os erros ficam entre níveis vizinhos.",
+        legenda: "Triagem: os erros ficam entre gravidades vizinhas.",
+      },
+      {
+        alt: "Regras de alerta do Grafana com drift dos sensores, vida útil crítica e queda do F1 disparados.",
+        legenda: "Alertas carregados de arquivos, disparando num teste de drift.",
+      },
+    ],
+  },
   "crypto-analyzer": {
     curto: "Testa 14 regras de trading contra comprar e segurar. Quase nenhuma vence.",
     curto: "Testa 14 regras de trading contra comprar e segurar. Quase nenhuma vence.",
@@ -42,22 +71,6 @@ export const projectsPt = {
       },
     ],
     codigoNota: "Repositório privado. Código sob pedido.",
-  },
-  "crypto-lakehouse": {
-    curto: "Pipeline idempotente: CoinGecko para MinIO, dbt + DuckDB, Airflow e Databricks.",
-    curto: "Pipeline idempotente: CoinGecko para MinIO, dbt + DuckDB, Airflow e Databricks.",
-    resumo:
-      "Como coletar dados de mercado de um jeito que dê para reprocessar, testar e reconstruir sem duplicar nada?",
-    feitos: [
-      "Ingestão idempotente da API da CoinGecko para o MinIO (compatível com S3), com chaves determinísticas na camada raw.",
-      "Camadas silver e gold em dbt + DuckDB, gravadas em Parquet, com star schema: duas dimensões, uma tabela fato de preços e uma agregação diária de volatilidade.",
-      "DAGs no Airflow para ingestão, para a rodada silver-gold e para enviar os arquivos gold ao Databricks, onde um notebook PySpark cria as tabelas Delta.",
-    ],
-    decisaoRotulo: "Decisão",
-    decisao:
-      "O dado bruto fica intocado, então qualquer camada seguinte pode ser reconstruída. A qualidade é checada a cada etapa: testes dbt de not_null, unique e relationships, testes unitários com S3 e HTTP simulados e uma checagem de que reprocessar não cria duplicatas.",
-    alt: "Diagrama do star schema com dim_cryptos, dim_calendario, fact_precos_mercado e agg_volatilidade_diaria.",
-    legenda: "A camada gold: star schema.",
   },
   "economic-risk-monitor": {
     curto: "Dados do Banco Mundial em raw, silver e gold, até uma nota de risco e um dashboard Streamlit.",

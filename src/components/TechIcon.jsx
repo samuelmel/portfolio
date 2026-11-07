@@ -14,11 +14,17 @@ import {
   siPytest,
   siGit,
   siGithub,
+  siGrafana,
+  siKeras,
   siLinux,
   siObsidian,
+  siOnnx,
   siPolars,
+  siPrometheus,
   siPython,
   siReact,
+  siScikitlearn,
+  siSpacy,
   siSqlalchemy,
   siYaml,
   siSqlite,
@@ -67,6 +73,12 @@ const SIMPLE = {
   github: siGithub,
   linux: siLinux,
   obsidian: siObsidian,
+  keras: siKeras,
+  sklearn: siScikitlearn,
+  spacy: siSpacy,
+  onnx: siOnnx,
+  prometheus: siPrometheus,
+  grafana: siGrafana,
 };
 
 // Ícones que a biblioteca de marcas não tem: genéricos do lucide ou um selo de texto.
@@ -151,6 +163,12 @@ const BY_NAME = {
   fastapi: "fastapi",
   react: "react",
   databricks: "databricks",
+  keras: "keras",
+  "scikit-learn": "sklearn",
+  spacy: "spacy",
+  onnx: "onnx",
+  prometheus: "prometheus",
+  grafana: "grafana",
 };
 
 export const keyFromName = (nome) => BY_NAME[nome.toLowerCase()];
